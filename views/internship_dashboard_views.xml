@@ -1,0 +1,143 @@
+<odoo>
+    <record id="view_dashboard_kanban" model="ir.ui.view">
+        <field name="name">intern.dashboard.kanban</field>
+        <field name="model">intern.bridge.dashboard</field>
+        <field name="arch" type="xml">
+            <kanban create="false" class="o_kanban_view">
+                <templates>
+                    <t t-name="kanban-box">
+
+                        <div class="o_dashboard_container">
+
+                            <!-- HEADER -->
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h1 class="o_dashboard_title">Internship Dashboard</h1>
+                            </div>
+
+                            <!-- CARDS -->
+                            <div class="row">
+
+                                <!-- STUDENTS -->
+                                <div class="col-lg-3 col-md-6 mb-4">
+                                    <button type="object" name="action_view_students"
+                                            class="o_dashboard_card bg-primary">
+
+                                        <i class="fa fa-users fa-2x" title="Students"></i>
+
+                                        <div class="o_value">
+                                            <field name="total_students"/>
+                                        </div>
+
+                                        <div>Students</div>
+                                    </button>
+                                </div>
+
+                                <!-- INTERNSHIPS -->
+                                <div class="col-lg-3 col-md-6 mb-4">
+                                    <button type="object" name="action_view_internships"
+                                            class="o_dashboard_card bg-success">
+
+                                        <i class="fa fa-briefcase fa-2x" title="Internships"></i>
+
+                                        <div class="o_value">
+                                            <field name="total_internships"/>
+                                        </div>
+
+                                        <div>Internships</div>
+                                    </button>
+                                </div>
+
+                                <!-- TASKS -->
+                                <div class="col-lg-3 col-md-6 mb-4">
+                                    <button type="object" name="action_view_tasks"
+                                            class="o_dashboard_card bg-warning">
+
+                                        <i class="fa fa-tasks fa-2x" title="Tasks"></i>
+
+                                        <div class="o_value">
+                                            <field name="total_tasks"/>
+                                        </div>
+
+                                        <div>Tasks</div>
+                                    </button>
+                                </div>
+
+                                <!-- WEEKLY -->
+                                <div class="col-lg-3 col-md-6 mb-4">
+                                    <button type="object" name="action_view_weekly_reports"
+                                            class="o_dashboard_card bg-info">
+
+                                        <i class="fa fa-calendar fa-2x" title="Weekly Reports"></i>
+
+                                        <div class="o_value">
+                                            <field name="total_weekly_reports"/>
+                                        </div>
+
+                                        <div>Weekly Reports</div>
+                                    </button>
+                                </div>
+
+                                <!-- MONTHLY -->
+                                <div class="col-lg-3 col-md-6 mb-4">
+                                    <button type="object" name="action_view_monthly_reports"
+                                            class="o_dashboard_card bg-secondary">
+
+                                        <i class="fa fa-line-chart fa-2x" title="Monthly Reports"></i>
+
+                                        <div class="o_value">
+                                            <field name="total_monthly_reports"/>
+                                        </div>
+
+                                        <div>Monthly Reports</div>
+                                    </button>
+                                </div>
+
+                                <!--mentor-->
+                                <div class="col-lg-3 col-md-6 mb-4">
+                                    <button type="object" name="action_view_mentors"
+                                            class="o_dashboard_card bg-primary">
+
+                                        <i class="fa fa-users fa-2x" title="Mentors"></i>
+
+                                        <div class="o_value">
+                                            <field name="total_mentors"/>
+                                        </div>
+
+                                        <div>Mentors</div>
+                                    </button>
+                                </div>
+
+                                <!--guide-->
+                                <div class="col-lg-3 col-md-6 mb-4">
+                                    <button type="object" name="action_view_guides"
+                                            class="o_dashboard_card bg-primary">
+
+                                        <i class="fa fa-users fa-2x" title="Guides"></i>
+
+                                        <div class="o_value">
+                                            <field name="total_guides"/>
+                                        </div>
+
+                                        <div>Guides</div>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record id="dashboard_record" model="intern.bridge.dashboard">
+        <field name="name">Main Dashboard</field>
+    </record>
+
+    <record id="action_dashboard" model="ir.actions.act_window">
+        <field name="name">Dashboard</field>
+        <field name="res_model">intern.bridge.dashboard</field>
+        <field name="view_mode">kanban</field>
+    </record>
+
+</odoo>

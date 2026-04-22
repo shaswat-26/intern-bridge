@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="student_internship_rule" model="ir.rule">
+            <field name="name">Student Internship Rule</field>
+            <field name="model_id" ref="model_intern_bridge_internship"/>
+            <field name="groups" eval="[(4, ref('intern_bridge.group_intern_bridge_student'))]"/>
+            <field name="domain_force">[('student_ids.user_id','=',user.id)]</field>
+        </record>
+
+        <record id="mentor_internship_rule" model="ir.rule">
+            <field name="name">Mentor Internship Rule</field>
+            <field name="model_id" ref="model_intern_bridge_internship"/>
+            <field name="groups" eval="[(4, ref('intern_bridge.group_intern_bridge_mentor'))]"/>
+            <field name="domain_force">[('company_mentor_id','=',user.id)]</field>
+        </record>
+
+        <record id="guide_internship_rule" model="ir.rule">
+            <field name="name">Guide Internship Rule</field>
+            <field name="model_id" ref="model_intern_bridge_internship"/>
+            <field name="groups" eval="[(4, ref('intern_bridge.group_intern_bridge_guide'))]"/>
+            <field name="domain_force">[('college_guide_id','=',user.id)]</field>
+        </record>
+
+        <record id="weekly_report_rule_student" model="ir.rule">
+            <field name="name">Student Weekly Report Rule</field>
+            <field name="model_id" ref="model_intern_bridge_weekly_report"/>
+            <field name="groups" eval="[(4, ref('intern_bridge.group_intern_bridge_student'))]"/>
+            <field name="domain_force">[('student_id.user_id','=',user.id)]</field>
+        </record>
+
+        <record id="weekly_report_rule_mentor" model="ir.rule">
+            <field name="name">Mentor Weekly Report Rule</field>
+            <field name="model_id" ref="model_intern_bridge_weekly_report"/>
+            <field name="groups" eval="[(4, ref('intern_bridge.group_intern_bridge_mentor'))]"/>
+            <field name="domain_force">[('mentor_id','=',user.id)]</field>
+        </record>
+
+        <record id="weekly_report_rule_guide" model="ir.rule">
+            <field name="name">Guide Weekly Report Rule</field>
+            <field name="model_id" ref="model_intern_bridge_weekly_report"/>
+            <field name="groups" eval="[(4, ref('intern_bridge.group_intern_bridge_guide'))]"/>
+            <field name="domain_force">[('internship_id.college_guide_id','=',user.id)]</field>
+        </record>
+
+        <record id="task_log_rule_student" model="ir.rule">
+            <field name="name">Student Task Log Rule</field>
+            <field name="model_id" ref="model_intern_bridge_task_log"/>
+            <field name="groups" eval="[(4, ref('intern_bridge.group_intern_bridge_student'))]"/>
+            <field name="domain_force">[('student_id.user_id','=',user.id)]</field>
+        </record>
+
+        <record id="task_log_rule_mentor" model="ir.rule">
+            <field name="name">Mentor Task Log Rule</field>
+            <field name="model_id" ref="model_intern_bridge_task_log"/>
+            <field name="groups" eval="[(4, ref('intern_bridge.group_intern_bridge_mentor'))]"/>
+            <field name="domain_force">[('internship_id.company_mentor_id', '=', user.id)]</field>
+        </record>
+
+        <record id="task_log_rule_guide" model="ir.rule">
+            <field name="name">Guide Task Log Rule</field>
+            <field name="model_id" ref="model_intern_bridge_task_log"/>
+            <field name="groups" eval="[(4, ref('intern_bridge.group_intern_bridge_guide'))]"/>
+            <field name="domain_force">[('internship_id.college_guide_id', '=', user.id)]</field>
+        </record>
+
+        <record id="student_own_rule" model="ir.rule">
+            <field name="name">Student Own Record</field>
+            <field name="model_id" ref="model_intern_bridge_student"/>
+            <field name="domain_force">[('user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('intern_bridge.group_intern_bridge_student'))]"/>
+        </record>
+
+        <record id="monthly_report_student_rule" model="ir.rule">
+            <field name="name">Student: Own Monthly Reports</field>
+            <field name="model_id" ref="model_intern_bridge_monthly_report"/>
+            <field name="groups" eval="[(4, ref('intern_bridge.group_intern_bridge_student'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+            <field name="domain_force">
+                ['|',
+                    ('student_id.user_id', '=', user.id),
+                    ('id', '=', False)
+                ]
+            </field>
+        </record>
+        <record id="monthly_report_mentor_rule" model="ir.rule">
+            <field name="name">Mentor: Assigned Students Reports</field>
+            <field name="model_id" ref="model_intern_bridge_monthly_report"/>
+            <field name="groups" eval="[(4, ref('intern_bridge.group_intern_bridge_mentor'))]"/>
+            <field name="domain_force">
+                [('mentor_id', '=', user.id)]
+            </field>
+        </record>
+        <record id="monthly_report_guide_rule" model="ir.rule">
+            <field name="name">Guide: Assigned Students Reports</field>
+            <field name="model_id" ref="model_intern_bridge_monthly_report"/>
+            <field name="groups" eval="[(4, ref('intern_bridge.group_intern_bridge_guide'))]"/>
+            <field name="domain_force">
+                [('guide_id', '=', user.id)]
+            </field>
+        </record>
+        <record id="mentor_own_rule" model="ir.rule">
+            <field name="name">Mentor: Own Record</field>
+            <field name="model_id" ref="intern_bridge.model_intern_bridge_mentor"/>
+            <field name="groups" eval="[(4, ref('intern_bridge.group_intern_bridge_mentor'))]"/>
+            <field name="domain_force">[('user_id','=',user.id)]</field>
+        </record>
+        <record id="guide_own_rule" model="ir.rule">
+            <field name="name">Guide: Own Record</field>
+            <field name="model_id" ref="intern_bridge.model_intern_bridge_guide"/>
+            <field name="groups" eval="[(4, ref('intern_bridge.group_intern_bridge_guide'))]"/>
+            <field name="domain_force">[('user_id','=',user.id)]</field>
+        </record>
+    </data>
+</odoo>

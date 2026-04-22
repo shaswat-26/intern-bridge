@@ -1,0 +1,127 @@
+<odoo>
+    <template id="monthly_report_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+
+                    <h2 style="text-align:center; margin-bottom:20px;">
+                        Monthly Internship Report
+                    </h2>
+
+                    <t t-foreach="docs" t-as="o">
+
+                        <h3>Report</h3>
+
+                        <table style="width:100%; border:1px solid black; border-collapse: collapse; margin-bottom:20px;">
+
+                            <tr>
+                                <td style="padding:8px;"><strong>Student</strong></td>
+                                <td style="padding:8px;">
+                                    <t t-esc="o.student_id.name"/>
+                                </td>
+
+                                <td style="padding:8px;"><strong>Month</strong></td>
+                                <td style="padding:8px;">
+                                    <t t-esc="o.report_month"/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="padding:8px;"><strong>Internship</strong></td>
+                                <td style="padding:8px;">
+                                    <t t-esc="o.internship_id.name"/>
+                                </td>
+
+                                <td style="padding:8px;"><strong>Status</strong></td>
+                                <td style="padding:8px;">
+                                    <span t-attf-style="
+                                        color: {{
+                                            'green' if o.state == 'guide_approved'
+                                            else 'orange' if o.state == 'mentor_approved'
+                                            else 'blue' if o.state == 'submitted'
+                                            else 'red'
+                                        }};
+                                    ">
+                                        <t t-esc="o.state"/>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="padding:8px;"><strong>Mentor</strong></td>
+                                <td style="padding:8px;">
+                                    <t t-esc="o.mentor_id.name"/>
+                                </td>
+
+                                <td style="padding:8px;"><strong>Guide</strong></td>
+                                <td style="padding:8px;">
+                                    <t t-esc="o.guide_id.name"/>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                        <t t-if="o.summary">
+                            <h4>Summary</h4>
+                            <p t-esc="o.summary"/>
+                        </t>
+
+                        <h4>Performance Overview</h4>
+
+                        <table style="width:100%; border:1px solid black; border-collapse: collapse; margin-bottom:20px;">
+                            <tr>
+                                <th style="padding:8px;">Total Hours</th>
+                                <th style="padding:8px;">Weekly Reports</th>
+                                <th style="padding:8px;">Completed Tasks</th>
+                                <th style="padding:8px;">Pending Tasks</th>
+                                <th style="padding:8px;">Progress (%)</th>
+                            </tr>
+
+                            <tr>
+                                <td style="padding:8px;"><t t-esc="o.total_hours"/></td>
+                                <td style="padding:8px;"><t t-esc="o.weekly_count"/></td>
+                                <td style="padding:8px;"><t t-esc="o.completed_task"/></td>
+                                <td style="padding:8px;"><t t-esc="o.pending_task"/></td>
+                                <td style="padding:8px;"><t t-esc="o.progress_percentage"/></td>
+                            </tr>
+                        </table>
+
+                        <t t-if="o.remarks">
+                            <h4>Remarks</h4>
+                            <p t-esc="o.remarks"/>
+                        </t>
+
+                        <div style="margin-top:40px;">
+                            <table style="width:100%; text-align:center;">
+                                <tr>
+                                    <td>
+                                        <strong>Mentor</strong><br/><br/>
+                                        ___________________
+                                    </td>
+                                    <td>
+                                        <strong>Guide</strong><br/><br/>
+                                        ___________________
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <hr style="margin-top:30px; border:1px solid #ccc;"/>
+
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_monthly_report_pdf" model="ir.actions.report">
+        <field name="name">Monthly Report</field>
+        <field name="model">intern.bridge.monthly.report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">intern_bridge.monthly_report_template</field>
+        <field name="report_file">intern_bridge.monthly_report_template</field>
+        <field name="print_report_name">'Monthly Report - %s' % (object.student_id.name)</field>
+        <field name="binding_model_id" ref="model_intern_bridge_monthly_report"/>
+    </record>
+
+</odoo>

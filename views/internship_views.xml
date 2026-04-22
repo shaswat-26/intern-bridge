@@ -1,0 +1,60 @@
+<odoo>
+
+    <record id="view_internship_tree" model="ir.ui.view">
+        <field name="name">internship.tree</field>
+        <field name="model">intern.bridge.internship</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="student_ids"/>
+                <field name="company_mentor_id"/>
+                <field name="college_guide_id"/>
+                <field name="company_name"/>
+                <field name="start_date" optional="show"/>
+                <field name="end_date" optional="hide"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_internship_form" model="ir.ui.view">
+        <field name="name">internship.form</field>
+        <field name="model">intern.bridge.internship</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="student_ids" widget="many2many_tags"/>
+                        <field name="company_mentor_id"/>
+                        <field name="college_guide_id"/>
+                        <field name="company_name"/>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                        <field name="status"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="view_internship_graph" model="ir.ui.view">
+        <field name="name">internship.graph</field>
+        <field name="model">intern.bridge.internship</field>
+        <field name="arch" type="xml">
+            <graph string="Internship Status Analysis" type="bar">
+                <field name="company_name" type="row"/>
+            </graph>
+        </field>
+    </record>
+    <record id="action_internships" model="ir.actions.act_window">
+        <field name="name">Internships</field>
+        <field name="res_model">intern.bridge.internship</field>
+        <field name="view_mode">tree,form,graph</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,126 @@
+<odoo>
+
+    <record id="view_monthly_report_tree" model="ir.ui.view">
+        <field name="name">monthly.report.tree</field>
+        <field name="model">intern.bridge.monthly.report</field>
+        <field name="arch" type="xml">
+            <tree>
+
+                <field name="internship_id"/>
+                <field name="report_month"/>
+                <field name="progress_percentage"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_monthly_report_form" model="ir.ui.view">
+        <field name="name">monthly.report.form</field>
+        <field name="model">intern.bridge.monthly.report</field>
+        <field name="arch" type="xml">
+             <form>
+                 <header>
+                    <button name="action_submit"
+                            string="Submit"
+                            type="object"
+                            class="btn-primary"/>
+
+                    <button name="action_mentor_approve"
+                            string="Mentor Approve"
+                            type="object"
+                            class="btn-primary"/>
+
+                    <button name="action_guide_approve"
+                            string="Guide Approve"
+                            type="object"
+                            class="btn-success"/>
+                </header>
+                 <sheet>
+                    <group invisible="1">
+                        <field name="can_submit"/>
+                        <field name="can_mentor_approve"/>
+                        <field name="can_guide_approve"/>
+                    </group>
+
+                    <group>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="draft,submitted,mentor_approved,guide_approved"/>
+                    </group>
+
+                    <group>
+                        <field name="internship_id"/>
+                        <field name="student_id"/>
+                        <field name="mentor_id"/>
+                        <field name="guide_id"/>
+                        <field name="report_month"/>
+                    </group>
+
+                    <group>
+                        <field name="summary"/>
+                        <field name="progress_percentage" widget="progressbar"/>
+                        <field name="remarks"/>
+                        <field name="weekly_count"/>
+                        <field name="total_hours"/>
+                    </group>
+
+                    <group>
+                        <field name="completed_task"/>
+                        <field name="pending_task"/>
+                    </group>
+
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+    <record id="view_monthly_report_graph_hours" model="ir.ui.view">
+        <field name="name">monthly.report.graph.hours</field>
+        <field name="model">intern.bridge.monthly.report</field>
+        <field name="arch" type="xml">
+            <graph string="Monthly Hours Trend" type="line">
+                <field name="report_month" interval="month"/>
+                <field name="student_id"/>
+                <field name="total_hours" type="measure"/>
+            </graph>
+        </field>
+    </record>
+    <record id="view_monthly_report_graph_tasks" model="ir.ui.view">
+        <field name="name">monthly.report.graph.tasks</field>
+        <field name="model">intern.bridge.monthly.report</field>
+        <field name="arch" type="xml">
+            <graph string="Task Completion Analysis" type="bar">
+                <field name="student_id"/>
+                <field name="completed_task" type="measure"/>
+                <field name="pending_task" type="measure"/>
+            </graph>
+        </field>
+    </record>
+    <record id="view_monthly_report_graph_state" model="ir.ui.view">
+        <field name="name">monthly.report.graph.state</field>
+        <field name="model">intern.bridge.monthly.report</field>
+        <field name="arch" type="xml">
+            <graph string="Report Status" type="pie">
+                <field name="state"/>
+                <field name="student_id"/>
+                <field name="id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+    <record id="view_monthly_report_graph_weekly" model="ir.ui.view">
+        <field name="name">monthly.report.graph.weekly</field>
+        <field name="model">intern.bridge.monthly.report</field>
+        <field name="arch" type="xml">
+            <graph string="Weekly Reports Count" type="bar">
+                <field name="report_month" interval="month"/>
+                <field name="student_id"/>
+                <field name="weekly_count" type="measure"/>
+            </graph>
+        </field>
+    </record>
+    <record id="action_monthly_reports" model="ir.actions.act_window">
+        <field name="name">Monthly Reports</field>
+        <field name="res_model">intern.bridge.monthly.report</field>
+        <field name="view_mode">tree,form,graph</field>
+    </record>
+
+</odoo>

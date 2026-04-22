@@ -1,0 +1,37 @@
+# -*- coding: utf-8 -*-
+{
+    'name': "intern_bridge",
+    'summary': "A platform for creating connection between interns, college Guides and Company mentors",
+    'description': """A platform for creating connection between interns, college Guides and Company mentors""",
+    'version': '0.1',
+    'category': 'Human Resources',
+    'depends': ['base', 'mail', 'contacts'],
+    'data': [
+        'security/groups.xml',
+        'data/demo_users.xml',
+        'data/sequence.xml',
+        'security/ir.model.access.csv',
+        'security/record_rules.xml',
+        'reports/weekly_report_template.xml',
+        'reports/weekly_report_action.xml',
+        'reports/monthly_report_template.xml',
+        'views/internship_dashboard_views.xml',
+        'views/internship_views.xml',
+        'views/student_views.xml',
+        'views/mentor_views.xml',
+        'views/guide_views.xml',
+        'views/weekly_report_views.xml',
+        'views/monthly_report_views.xml',
+        'views/task_views.xml',
+        'views/menus.xml',
+        'views/views.xml',
+        'views/templates.xml',
+    ],
+    'assets': {
+        'web.assets_backend': [
+            'intern_bridge/static/src/css/dashboard.css',
+        ],
+    },
+    'installable': True,
+    'application': True,
+}

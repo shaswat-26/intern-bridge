@@ -1,0 +1,26 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_internship_student,internship student,model_intern_bridge_internship,intern_bridge.group_intern_bridge_student,1,1,0,0
+access_internship_mentor,internship mentor,model_intern_bridge_internship,intern_bridge.group_intern_bridge_mentor,1,1,0,0
+access_internship_guide,internship guide,model_intern_bridge_internship,intern_bridge.group_intern_bridge_guide,1,1,0,0
+access_internship_admin,internship admin,model_intern_bridge_internship,intern_bridge.group_intern_bridge_admin,1,1,1,1
+access_weekly_student,weekly report student,model_intern_bridge_weekly_report,intern_bridge.group_intern_bridge_student,1,1,1,0
+access_weekly_mentor,weekly report mentor,model_intern_bridge_weekly_report,intern_bridge.group_intern_bridge_mentor,1,1,0,0
+access_weekly_guide,weekly report guide,model_intern_bridge_weekly_report,intern_bridge.group_intern_bridge_guide,1,1,0,0
+access_weekly_admin,weekly report admin,model_intern_bridge_weekly_report,intern_bridge.group_intern_bridge_admin,1,1,1,1
+access_monthly_student,monthly report student,model_intern_bridge_monthly_report,intern_bridge.group_intern_bridge_student,1,1,1,0
+access_monthly_mentor,monthly report mentor,model_intern_bridge_monthly_report,intern_bridge.group_intern_bridge_mentor,1,1,1,0
+access_monthly_guide,monthly report guide,model_intern_bridge_monthly_report,intern_bridge.group_intern_bridge_guide,1,1,1,0
+access_monthly_admin,monthly report admin,model_intern_bridge_monthly_report,intern_bridge.group_intern_bridge_admin,1,1,1,1
+access_task_student,task log student,model_intern_bridge_task_log,intern_bridge.group_intern_bridge_student,1,1,0,0
+access_task_mentor,task log mentor,model_intern_bridge_task_log,intern_bridge.group_intern_bridge_mentor,1,1,1,0
+access_task_guide,task log guide,model_intern_bridge_task_log,intern_bridge.group_intern_bridge_guide,1,1,0,0
+access_task_admin,task log admin,model_intern_bridge_task_log,intern_bridge.group_intern_bridge_admin,1,1,1,1
+access_student_user,student user,model_intern_bridge_student,intern_bridge.group_intern_bridge_student,1,0,0,0
+access_student_admin,student admin,model_intern_bridge_student,base.group_system,1,1,1,1
+access_student_mentor,student mentor,model_intern_bridge_student,intern_bridge.group_intern_bridge_mentor,1,0,0,0
+access_student_guide,student guide,model_intern_bridge_student,intern_bridge.group_intern_bridge_guide,1,0,0,0
+access_mentor_user,mentor user,model_intern_bridge_mentor,intern_bridge.group_intern_bridge_mentor,1,0,0,0
+access_mentor_admin,Mentor Admin,model_intern_bridge_mentor,intern_bridge.group_intern_bridge_admin,1,1,1,1
+access_guide_user,guide user,model_intern_bridge_guide,intern_bridge.group_intern_bridge_guide,1,0,0,0
+access_guide_admin,Guide Admin,model_intern_bridge_guide,intern_bridge.group_intern_bridge_admin,1,1,1,1
+access_dashboard_user,access.dashboard.user,model_intern_bridge_dashboard,group_intern_bridge_admin,1,1,1,1

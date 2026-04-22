@@ -1,0 +1,121 @@
+<odoo>
+
+    <record id="view_task_log_tree" model="ir.ui.view">
+        <field name="name">task.log.tree</field>
+        <field name="model">intern.bridge.task.log</field>
+        <field name="arch" type="xml">
+            <tree decoration-success="status == 'done'"
+                  decoration-warning="status == 'assigned'"
+                  decoration-danger="status == 'rejected'">
+                <field name="name"/>
+                <field name="internship_id"/>
+                <field name="date"/>
+                <field name="hours_spent"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_task_log_form" model="ir.ui.view">
+        <field name="name">task.log.form</field>
+        <field name="model">intern.bridge.task.log</field>
+        <field name="arch" type="xml">
+           <form>
+                <header>
+
+                    <button name="action_assign_task"
+                            string="Assign Task"
+                            type="object"
+                            class="btn-primary"
+                            groups="intern_bridge.group_intern_bridge_mentor"
+                            invisible="status != 'draft'"/>
+
+                    <button name="action_submit"
+                            string="Submit Task"
+                            type="object"
+                            class="btn-warning"
+                            groups="intern_bridge.group_intern_bridge_student"
+                            invisible="status != 'assigned'"/>
+
+                    <button name="action_approve"
+                            string="Approve"
+                            type="object"
+                            class="btn-success"
+                            groups="intern_bridge.group_intern_bridge_mentor"
+                            invisible="status != 'submitted'"/>
+
+                    <button name="action_reject"
+                            string="Reject"
+                            type="object"
+                            class="btn-danger"
+                            groups="intern_bridge.group_intern_bridge_mentor"
+                            invisible="status != 'submitted'"/>
+
+                    <button name="action_mark_done"
+                            string="Mark as Done"
+                            type="object"
+                            class="btn-success"
+                            groups="intern_bridge.group_intern_bridge_mentor"
+                            invisible="status != 'approved'"/>
+
+                    <field name="status" widget="statusbar"
+                           statusbar_visible="draft,assigned,submitted,approved,done"/>
+
+                </header>
+
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="internship_id"/>
+                        <field name="date"/>
+                    </group>
+
+                    <group>
+                        <field name="description"/>
+                        <field name="hours_spent"/>
+                        <field name="status" readonly="1"/>
+                        <field name="student_id"/>
+                    </group>
+
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_task_log_graph" model="ir.ui.view">
+        <field name="name">task.log.graph</field>
+        <field name="model">intern.bridge.task.log</field>
+        <field name="arch" type="xml">
+            <graph string="Task Logs" type="pie">
+                <field name="student_id"/>
+                <field name="id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+    <record id="view_task_log_graph_status" model="ir.ui.view">
+        <field name="name">task.log.graph.status</field>
+        <field name="model">intern.bridge.task.log</field>
+        <field name="arch" type="xml">
+            <graph string="Tasks by Status" type="bar">
+                <field name="status"/>
+                <field name="id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+    <record id="view_task_log_graph_hours" model="ir.ui.view">
+        <field name="name">task.log.graph.hours</field>
+        <field name="model">intern.bridge.task.log</field>
+        <field name="arch" type="xml">
+            <graph string="Hours Spent per Student" type="bar">
+                <field name="student_id"/>
+                <field name="hours_spent" type="measure"/>
+            </graph>
+        </field>
+    </record>
+    <record id="action_task_logs" model="ir.actions.act_window">
+        <field name="name">Task Logs</field>
+        <field name="res_model">intern.bridge.task.log</field>
+        <field name="view_mode">tree,form,graph</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,92 @@
+<odoo>
+    <template id="report_weekly_report">
+
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-set="company" t-value="res_company"/>
+                <main>
+                    <div class="page">
+                        <h2 style="text-align:center; margin-bottom:20px;">
+                            Weekly Internship Report
+                        </h2>
+                        <t t-foreach="docs" t-as="o">
+                            <h3>Report</h3>
+`
+                            <table style="width:100%; border:1px solid black; border-collapse: collapse; margin-bottom:20px;">
+
+                                <tr>
+                                    <td style="padding:8px;"><strong>Student</strong></td>
+                                    <td style="padding:8px;">
+                                        <t t-esc="o.student_id.name"/>
+                                    </td>
+
+                                    <td style="padding:8px;"><strong>Week</strong></td>
+                                    <td style="padding:8px;">
+                                        <t t-esc="o.week_number"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="padding:8px;"><strong>Company</strong></td>
+                                    <td style="padding:8px;">
+                                        <t t-esc="o.company_id.name"/>
+                                    </td>
+
+                                    <td style="padding:8px;"><strong>Status</strong></td>
+                                    <td style="padding:8px;">
+                                        <span t-attf-style="
+                                            color: {{
+                                                'green' if o.status == 'approved'
+                                                else 'orange' if o.status == 'mentor_review'
+                                                else 'red'
+                                            }};
+                                        ">
+                                            <t t-esc="o.status"/>
+                                        </span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td style="padding:8px;"><strong>Mentor</strong></td>
+                                    <td colspan="3" style="padding:8px;">
+                                        <t t-esc="o.mentor_id.name"/>
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <t t-if="o.work_done">
+                                <h4>Work Done</h4>
+                                <p t-esc="o.work_done"/>
+                            </t>
+
+                            <t t-if="o.challenges">
+                                <h4>Challenges</h4>
+                                <p t-esc="o.challenges"/>
+                            </t>
+
+                            <t t-if="o.learning">
+                                <h4>Learning</h4>
+                                <p t-esc="o.learning"/>
+                            </t>
+
+                            <t t-if="o.mentor_feedback">
+                                <h4>Mentor Feedback</h4>
+                                <p t-esc="o.mentor_feedback"/>
+                            </t>
+
+                            <t t-if="o.guide_feedback">
+                                <h4>Guide Feedback</h4>
+                                <p t-esc="o.guide_feedback"/>
+                            </t>
+                            <hr style="margin-top:30px; border:1px solid #ccc;"/>
+
+                        </t>
+
+                    </div>
+                </main>
+
+            </t>
+        </t>
+
+    </template>
+</odoo>

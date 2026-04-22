@@ -1,0 +1,55 @@
+<odoo>
+   <record id="view_student_tree" model="ir.ui.view">
+        <field name="name">intern.bridge.student.tree</field>
+        <field name="model">intern.bridge.student</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="enrollment_no"/>
+                <field name="name"/>
+                <field name="email" widget="email"/>
+                <field name="internship_ids" widget="many2many_tags"/>
+                <field name="user_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_student_form" model="ir.ui.view">
+        <field name="name">intern.bridge.student.form</field>
+        <field name="model">intern.bridge.student</field>
+        <field name="arch" type="xml">
+            <form string="Student">
+                <sheet>
+                    <header>
+                        <button name="action_create_user"
+                            string="Create User"
+                            type="object"
+                            class="btn-primary"/>
+                    </header>
+                    <group>
+                        <field name="enrollment_no"/>
+                        <field name="name"/>
+                        <field name="email"/>
+                        <field name="user_password" password="True"/>
+                        <field name="internship_ids" readonly="1" widget="many2many_tags"/>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_student_graph" model="ir.ui.view">
+        <field name="name">student.graph</field>
+        <field name="model">intern.bridge.student</field>
+        <field name="arch" type="xml">
+            <graph string="Students Overview" type="bar">
+                <field name="create_date" interval="month"/>
+                <field name="id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+    <record id="action_student" model="ir.actions.act_window">
+        <field name="name">Students</field>
+        <field name="res_model">intern.bridge.student</field>
+        <field name="view_mode">tree,form,graph</field>
+    </record>
+
+</odoo>

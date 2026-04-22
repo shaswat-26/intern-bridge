@@ -1,0 +1,11 @@
+<odoo>
+    <record id="action_weekly_report_pdf" model="ir.actions.report">
+        <field name="name">Weekly Report</field>
+        <field name="model">intern.bridge.weekly.report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">intern_bridge.report_weekly_report</field>
+        <field name="report_file">intern_bridge.report_weekly_report</field>
+        <field name="print_report_name">'Weekly Report - %s' % (object.student_id.name)</field>
+        <field name="binding_model_id" ref="model_intern_bridge_weekly_report"/>
+    </record>
+</odoo>

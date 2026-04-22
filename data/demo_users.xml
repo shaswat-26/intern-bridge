@@ -1,0 +1,137 @@
+<odoo>
+    <record id="user_student_1" model="res.users">
+        <field name="name">Student 1</field>
+        <field name="login">student1</field>
+        <field name="password">1234</field>
+        <field name="email">student1@example.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('intern_bridge.group_intern_bridge_student')])]"/>
+    </record>
+
+    <record id="user_student_2" model="res.users">
+        <field name="name">Student 2</field>
+        <field name="login">student2</field>
+        <field name="password">1234</field>
+        <field name="email">student2@example.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('intern_bridge.group_intern_bridge_student')])]"/>
+    </record>
+
+    <record id="user_student_3" model="res.users">
+        <field name="name">Student 3</field>
+        <field name="login">student3</field>
+        <field name="password">1234</field>
+        <field name="email">student3@example.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('intern_bridge.group_intern_bridge_student')])]"/>
+    </record>
+
+    <record id="user_student_4" model="res.users">
+        <field name="name">Student 4</field>
+        <field name="login">student4</field>
+        <field name="password">1234</field>
+        <field name="email">student4@example.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('intern_bridge.group_intern_bridge_student')])]"/>
+    </record>
+
+    <record id="user_student_5" model="res.users">
+        <field name="name">Student 5</field>
+        <field name="login">student5</field>
+        <field name="password">1234</field>
+        <field name="email">student5@example.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('intern_bridge.group_intern_bridge_student')])]"/>
+    </record>
+
+    <record id="user_guide_1" model="res.users">
+        <field name="name">Guide 1</field>
+        <field name="login">guide1</field>
+        <field name="password">1234</field>
+        <field name="email">guide1@example.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('intern_bridge.group_intern_bridge_guide')])]"/>
+    </record>
+
+    <record id="user_guide_2" model="res.users">
+        <field name="name">Guide 2</field>
+        <field name="login">guide2</field>
+        <field name="password">1234</field>
+        <field name="email">guide2@example.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('intern_bridge.group_intern_bridge_guide')])]"/>
+    </record>
+
+    <record id="user_mentor_1" model="res.users">
+        <field name="name">Mentor 1</field>
+        <field name="login">mentor1</field>
+        <field name="password">1234</field>
+        <field name="email">mentor1@example.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('intern_bridge.group_intern_bridge_mentor')])]"/>
+    </record>
+
+    <record id="user_mentor_2" model="res.users">
+        <field name="name">Mentor 2</field>
+        <field name="login">mentor2</field>
+        <field name="password">1234</field>
+        <field name="email">mentor2@example.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('intern_bridge.group_intern_bridge_mentor')])]"/>
+    </record>
+
+    <record id="student_1" model="intern.bridge.student">
+        <field name="name">Student 1</field>
+        <field name="enrollment_no">ENR001</field>
+        <field name="email">student1@example.com</field>
+         <field name="user_password">1234</field>
+        <field name="user_id" ref="intern_bridge.user_student_1"/>
+    </record>
+    <record id="student_2" model="intern.bridge.student">
+        <field name="name">Student 2</field>
+        <field name="enrollment_no">ENR002</field>
+        <field name="email">student2@example.com</field>
+         <field name="user_password">1234</field>
+        <field name="user_id" ref="intern_bridge.user_student_2"/>
+    </record>
+    <record id="student_3" model="intern.bridge.student">
+        <field name="name">Student 3</field>
+        <field name="enrollment_no">ENR003</field>
+        <field name="email">student3@example.com</field>
+         <field name="user_password">1234</field>
+        <field name="user_id" ref="intern_bridge.user_student_3"/>
+    </record>
+    <record id="student_4" model="intern.bridge.student">
+        <field name="name">Student 4</field>
+        <field name="enrollment_no">ENR004</field>
+        <field name="email">student4@example.com</field>
+         <field name="user_password">1234</field>
+        <field name="user_id" ref="intern_bridge.user_student_4"/>
+    </record>
+    <record id="student_5" model="intern.bridge.student">
+        <field name="name">Student 5</field>
+        <field name="enrollment_no">ENR005</field>
+        <field name="email">student5@example.com</field>
+         <field name="user_password">1234</field>
+        <field name="user_id" ref="intern_bridge.user_student_5"/>
+    </record>
+
+    <record id="mentor_1" model="intern.bridge.mentor">
+        <field name="name">Mentor 1</field>
+        <field name="email">mentor1@example.com</field>
+        <field name="user_password">1234</field>
+        <field name="user_id" ref="intern_bridge.user_mentor_1"/>
+    </record>
+
+    <record id="mentor_2" model="intern.bridge.mentor">
+        <field name="name">Mentor 2</field>
+        <field name="email">mentor2@example.com</field>
+        <field name="user_password">1234</field>
+        <field name="user_id" ref="intern_bridge.user_mentor_2"/>
+    </record>
+
+    <record id="guide_1" model="intern.bridge.guide">
+        <field name="name">Guide 1</field>
+        <field name="email">guide1@example.com</field>
+        <field name="user_password">1234</field>
+        <field name="user_id" ref="intern_bridge.user_guide_1"/>
+    </record>
+
+    <record id="guide_2" model="intern.bridge.guide">
+        <field name="name">Guide 2</field>
+        <field name="email">guide2@example.com</field>
+        <field name="user_password">1234</field>
+        <field name="user_id" ref="intern_bridge.user_guide_2"/>
+    </record>
+</odoo>
